@@ -1,32 +1,84 @@
 #include "push_swap.h"
-int ft_atoi(char *str)
+void ft_error()
 {
-	int i;
-
-	i = 0;
-	if(ft_isdigit())
+	write(1,"error",5);
 }
-void prevalid(char *str)
+void output(char **str)
 {
-	int i;
+	while(*str)
+		printf("%s ",*str++);
+}
+int	ft_otoi(const char *str)
+{
+	long				znak;
+	unsigned long long	sum;
 
-	i = 0;
-	while()
+	znak = 1;
+	sum = 0;
+	while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\r'
+		|| *str == '\v' || *str == '\f')
+		str++;
+	if (*str == '-')
 	{
-		
+		str++;
+		znak *= -1;
 	}
+	else if (*str == '+')
+		str++;
+	while (*str && *str >= '0' && *str <= '9')
+	{
+		sum = sum * 10 + *str - '0';
+		str++;
+	}
+	if (sum > 2147483647 && znak + 1)
+		return (-1);
+	if (sum > 2147483648)
+		return (0);
+	return ((int)sum * znak);
 }
-void validation(char **str)
+void totalcheck()
+{
+
+}
+int prevalid(char *str)
+{
+	int i;
+
+	i = 0;
+
+	while(*str)
+	{
+		if(ft_otoi(str++)==-1)
+		{
+			return (0);
+			break;
+		}
+	}
+	return (1);
+}
+
+int validation(t_parse *parse)
 {
 	int i;
 	int j;
+	int flag;
 
 	i = 0;
-	while(str[i])
+	flag = 1;
+	while(parse->big_str[i])
 	{
-		prevalid(&str[i]);
+		if(prevalid(parse->big_str[i])==0)
+		{
+			// printf("aboba");
+			flag = 0;
+			break;
+		}
 		i++;
 	}
+	if (flag == 0)
+		return (0);
+	else
+		return (1);
 }
 
 int words(char **str)
@@ -39,11 +91,6 @@ int words(char **str)
 	while(str[i])
 		i++;
 	return (i);
-}
-void output(char **str)
-{
-	while(*str)
-		printf("%s ",*str++);
 }
 void parser(int argc, char **argv, t_parse *parse)
 {
@@ -61,8 +108,8 @@ void parser(int argc, char **argv, t_parse *parse)
 	parse->big_str=ft_split(str,' ');
 	parse->parse_size=words(parse->big_str);
 	output(parse->big_str);
-	validation(parse->big_str);
-
+	if(validation(parse)==0)
+		ft_error();
 }
 
 
