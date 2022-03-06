@@ -67,19 +67,22 @@ typedef struct s_node
 	long		score;
 }				t_node;
 
-typedef struct s_arr
+typedef struct s_stack
 {
 	struct s_node	*head;
 	int				size;
+	int				max;
+	int				mid;
+	int				next;
+	int				flag;
 		
-}				t_arr;
+}				t_stack;
 
 typedef struct	s_parse
 {
 	char 	**big_str;
-	int		*big_array;
-	int		parse_size;
-	
+	int		*array;
+	int		size;
 	int		*ind_array;
 	int		*sorted_ind_array;
 	

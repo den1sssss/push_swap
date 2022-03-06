@@ -2,12 +2,15 @@
 void ft_error()
 {
 	write(1,"error",5);
+	exit(0);
 }
 void output(char **str)
 {
 	while(*str)
 		printf("%s ",*str++);
+	printf("\n");
 }
+
 int	ft_otoi(const char *str)
 {
 	long				znak;
@@ -36,10 +39,6 @@ int	ft_otoi(const char *str)
 		return (0);
 	return ((int)sum * znak);
 }
-void totalcheck()
-{
-
-}
 int prevalid(char *str)
 {
 	int i;
@@ -50,14 +49,15 @@ int prevalid(char *str)
 	{
 		if(ft_otoi(str++)==-1)
 		{
-			return (0);
-			break;
+			ft_error();
+			// return (0);
+			// break;
 		}
 	}
 	return (1);
 }
 
-int validation(t_parse *parse)
+void validation(t_parse *parse)
 {
 	int i;
 	int j;
@@ -76,9 +76,7 @@ int validation(t_parse *parse)
 		i++;
 	}
 	if (flag == 0)
-		return (0);
-	else
-		return (1);
+		ft_error();
 }
 
 int words(char **str)
@@ -91,6 +89,33 @@ int words(char **str)
 	while(str[i])
 		i++;
 	return (i);
+}
+void create_array(t_parse *parse)
+{
+	int i;
+
+	i = 0;
+	parse->array =(int *)malloc(sizeof(int)*parse->size);
+	if (!parse->big_str || !parse->array)
+		ft_error();
+	while(i<parse->size)
+	{
+		parse->array[i]=ft_otoi(parse->big_str[i]);
+		i++;
+	}
+}
+
+void writearray(t_parse *parse)
+{
+	int i;
+
+	i=0;
+	while(i<parse->size)
+	{
+		ft_putnbr_fd(parse->array[i],0);
+		write(0," ",1);
+		i++;
+	}
 }
 void parser(int argc, char **argv, t_parse *parse)
 {
@@ -106,16 +131,20 @@ void parser(int argc, char **argv, t_parse *parse)
 		i++;
 	}
 	parse->big_str=ft_split(str,' ');
-	parse->parse_size=words(parse->big_str);
+	parse->size=words(parse->big_str);
+	printf("\nwords:  %d\n",words(parse->big_str));
+	printf("\noutput (str) : ");
 	output(parse->big_str);
-	if(validation(parse)==0)
-		ft_error();
+	printf("\nwritearray:\n ");
+	validation(parse);
+	create_array(parse);
+	writearray(parse);
 }
 
 
 int main(int argc, char **argv)
 {
-	t_arr *list;
+	t_stack *list;
 	t_node *temp;
 	t_parse	parse;
 	if(argc > 2)
@@ -124,10 +153,9 @@ int main(int argc, char **argv)
 			// sorting();
 			// free_stack();
 		}
-	// else
-	// {
-	// 	// ft_error();
-	// 	exit(0);
-	// }
+	else
+	{
+		ft_error();
+	}
 	return (0);
 }
