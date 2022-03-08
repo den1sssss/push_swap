@@ -10,7 +10,33 @@ void output(char **str)
 		printf("%s ",*str++);
 	printf("\n");
 }
+void writearray(t_parse *parse)
+{
+	int i;
 
+	i=0;
+	printf("\n");
+	while(i<parse->size)
+	{
+		ft_putnbr_fd(parse->array[i],0);
+		write(0," ",1);
+		i++;
+	}
+}
+void printmassiv(int *A)
+{
+	int i;
+
+	i=0;
+	printf("\n");
+	while(A[i])
+	{
+		ft_putnbr_fd(A[i],0);
+		write(0," ",1);
+		i++;
+	}
+		printf("\n");
+}
 int	ft_otoi(const char *str)
 {
 	long				znak;
@@ -90,6 +116,93 @@ int words(char **str)
 		i++;
 	return (i);
 }
+void duplicates(t_parse *parse)
+{
+	int i;
+	int flag;
+	int c;
+
+	i = 0;
+	flag = -1;
+	c=parse->array[i];
+	while(i<parse->size)
+	{
+		if(parse->array[i]==c)
+			flag++;
+		else
+		{
+			c=parse->array[i];
+			flag = 0;
+		}
+		if(flag > 0)
+		{
+			printf("\nduplicates are found!\n");
+			exit(0);
+		}
+		i++;
+	}
+}
+int *create_ind_array(int len)
+{
+	int i;
+	int *arr;
+
+	i = 0;
+	arr=(int*)malloc(sizeof(int)*len);
+	if(!arr)
+	{
+		printf("no ind_array!\n");
+		exit(0);
+	}
+	while(i<len)
+	{
+		arr[i]=i+1;
+		i++;
+	}
+	return(arr);
+}
+void swapelem(int *a,int *b)
+{
+	int kek;
+
+	kek=*a;
+	*a=*b;
+	*b=kek;
+}
+void presort(t_parse *parse, int flag)
+{
+	int i;
+	int j;
+	int *A;
+	int *B;
+
+	i = 0;
+	if(flag == 0)
+		A=parse->array;
+	else
+		A=parse->ind_array;
+	B=create_ind_array(parse->size);
+	while(i<parse->size)
+	{
+		j = 0;
+		while(j<parse->size - i -1)
+		{
+			if(A[j]>A[j+1])
+			{
+				swapelem(&A[j],&A[j+1]);
+				swapelem(&B[j],&B[j+1]);
+			}
+			j++;
+		}
+		i++;
+	}
+	if(flag == 0)
+		parse->ind_array=B;
+	if(flag == 1)
+		parse->sorted_ind_array=B;
+	if(flag ==0)
+		printmassiv(A);
+}
 void create_array(t_parse *parse)
 {
 	int i;
@@ -103,19 +216,9 @@ void create_array(t_parse *parse)
 		parse->array[i]=ft_otoi(parse->big_str[i]);
 		i++;
 	}
-}
-
-void writearray(t_parse *parse)
-{
-	int i;
-
-	i=0;
-	while(i<parse->size)
-	{
-		ft_putnbr_fd(parse->array[i],0);
-		write(0," ",1);
-		i++;
-	}
+	presort(parse,0);
+	duplicates(parse);
+	presort(parse,1);
 }
 void parser(int argc, char **argv, t_parse *parse)
 {
@@ -144,13 +247,19 @@ void parser(int argc, char **argv, t_parse *parse)
 
 int main(int argc, char **argv)
 {
-	t_stack *list;
+	t_stack *a;
+	t_stack *b;
 	t_node *temp;
 	t_parse	parse;
+
 	if(argc > 2)
 		{
 			parser(argc,argv,&parse);
-			// sorting();
+			a=create_stack(parse.size,parse.sorted_ind_array);
+			b=initialize(0);
+			printstack(a,1);
+			printstack(b,2);
+			sorting(a,b);
 			// free_stack();
 		}
 	else

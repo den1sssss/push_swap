@@ -62,9 +62,9 @@ typedef struct s_node
 {
 	struct s_node	*next;
 	
-	int		value;
-	
+	int			value;
 	long		score;
+	int			flag;
 }				t_node;
 
 typedef struct s_stack
@@ -87,5 +87,21 @@ typedef struct	s_parse
 	int		*sorted_ind_array;
 	
 }				t_parse;
+
+
+
+
+
+
+
+void printstack(t_stack *stack, int flag);
+t_node *node_create(int value);
+t_node *lastelem(t_stack *stack);
+void addelem(t_stack *stack,t_node *elem);
+t_stack *initialize(int size);
+t_stack *create_stack(int size, int *arr);
+void sorting(t_stack *a,t_stack *b);
+int alreadysorted(t_stack *a);
+
 
 #endif
