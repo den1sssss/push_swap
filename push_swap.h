@@ -101,7 +101,7 @@ void addelem(t_stack *stack,t_node *elem);
 t_stack *initialize(int size);
 t_stack *create_stack(int size, int *arr);
 void sorting(t_stack *a,t_stack *b);
-int alreadysorted(t_stack *a);
+int isalreadysorted(t_stack *a);
 
 
 #endif

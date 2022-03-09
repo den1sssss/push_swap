@@ -1,5 +1,5 @@
 #include "push_swap.h"
-int alreadysorted(t_stack *a)
+int isalreadysorted(t_stack *a)
 {
 	t_node *kek;
 	int flag;
@@ -24,9 +24,9 @@ int alreadysorted(t_stack *a)
 
 void sorting(t_stack *a,t_stack *b)
 {
-	if(alreadysorted(a)==1)
+	if(isalreadysorted(a)==1)
 	{
 		printf("Stack already sorted");
-		exit(0);
+		// exit(0);
 	}
 }
