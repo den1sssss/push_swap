@@ -91,7 +91,8 @@ typedef struct	s_parse
 
 
 
-
+# define MAX_INT 2147483647
+# define MIN_INT -2147483648
 
 
 void printstack(t_stack *stack, int flag);
@@ -100,8 +101,11 @@ t_node *lastelem(t_stack *stack);
 void addelem(t_stack *stack,t_node *elem);
 t_stack *initialize(int size);
 t_stack *create_stack(int size, int *arr);
-void sorting(t_stack *a,t_stack *b);
+void sorting(t_stack *a,t_stack *b,int argc,char **argv);
 int isalreadysorted(t_stack *a);
+void sort_three(t_stack *stack);
+void sort_five(t_stack *a,t_stack *b,int argc);
+int minimum(t_stack *stack);
 
 
 #endif

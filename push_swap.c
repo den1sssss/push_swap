@@ -259,7 +259,7 @@ int main(int argc, char **argv)
 			b=initialize(0);
 			printstack(a,1);
 			printstack(b,2);
-			sorting(a,b);
+			sorting(a,b,argc,argv);
 			// free_stack();
 		}
 	else
