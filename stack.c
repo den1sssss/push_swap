@@ -7,12 +7,13 @@ void printstack(t_stack *stack, int flag)
 	if(flag == 1)
 		printf("\nA: ");
 	if(flag == 2)
-		printf("\nB: \n");
+		printf("\nB: ");
 	while(kek)
 	{
 		printf("%d ", kek->value);
 		kek=kek->next;
 	}
+	printf("\n");
 	// printf("\n[next: %d | ",stack->next);
 	// printf("size: %d]\n",stack->size);
 }

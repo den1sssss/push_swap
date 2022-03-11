@@ -108,4 +108,33 @@ void sort_five(t_stack *a,t_stack *b,int argc);
 int minimum(t_stack *stack);
 
 
+void swap(t_stack *stack);
+void push(t_stack *src,t_stack *dest);
+void rotate(t_stack *stack);
+void reverserotate(t_stack *stack);
+void sa_sb(t_stack *stack,int whichone);
+void ss(t_stack *a,t_stack *b);
+void pa_pb(t_stack *a,t_stack *b,int whichone);
+void ra_rb(t_stack *stack,int whichone);
+void rr(t_stack *a,t_stack *b);
+void rra_rrb(t_stack *stack,int whichone);
+void rrr(t_stack *a,t_stack *b);
+
+
+// void globalsort(t_stack *a,t_stack *b);
+// static void sort_b(t_stack *a,t_stack *b);
+// static int placeofmax(t_stack *stack, int max);
+// int max_ind(t_stack *stack);
+// void right_ind(t_stack *a);
+
+
+int maximum(t_stack *stack);
+void	big_sort(t_stack *stack_a, t_stack *stack_b);
+static void	ft_sort(t_stack *stack_a, t_stack *stack_b, int action);
+static void	ft_stack_b(t_stack *stack_b, t_stack *stack_a);
+int	min_value(t_stack *stack_b);
+int	max_value(t_stack *stack_b);
+int	sort_steps(t_stack *stack_b);
+
+
 #endif
