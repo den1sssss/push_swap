@@ -6,7 +6,7 @@
 /*   By: dshirely <dshirely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 22:50:47 by dshirely          #+#    #+#             */
-/*   Updated: 2022/03/14 14:44:11 by dshirely         ###   ########.fr       */
+/*   Updated: 2022/03/14 17:48:08 by dshirely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ void	sorting(t_stack *a, t_stack *b, int argc)
 	else if (argc > 6)
 		big_sort(a, b);
 	issorted(a);
-	if(!isis(a) && (argc == 5 || argc == 6))
-		sort_five(a,b,argc);
-		
+	if (!isis(a) && (argc == 5 || argc == 6))
+		sort_five(a, b, argc);
 }

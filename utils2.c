@@ -6,7 +6,7 @@
 /*   By: dshirely <dshirely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 16:00:05 by dshirely          #+#    #+#             */
-/*   Updated: 2022/03/14 13:51:06 by dshirely         ###   ########.fr       */
+/*   Updated: 2022/03/14 17:48:48 by dshirely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ void	issorted(t_stack *a)
 	flag = 0;
 	kek = a->head;
 	if (kek->value > kek->next->value)
-		sa_sb(a,1);
+		sa_sb(a, 1);
 }
-int isis(t_stack *a)
+
+int	isis(t_stack *a)
 {
 	t_node	*kek;
 	int		flag;
@@ -46,5 +47,5 @@ int isis(t_stack *a)
 	}
 	if (flag == 0)
 		return (1);
-	return(0);
+	return (0);
 }

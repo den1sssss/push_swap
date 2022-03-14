@@ -6,7 +6,7 @@
 /*   By: dshirely <dshirely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 13:23:44 by dshirely          #+#    #+#             */
-/*   Updated: 2022/03/13 16:46:36 by dshirely         ###   ########.fr       */
+/*   Updated: 2022/03/14 17:47:19 by dshirely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	isalreadysorted(t_stack *a)
 		kek = kek->next;
 	}
 	if (flag == 0)
-		// ft_error();
 		exit(0);
 }
 
