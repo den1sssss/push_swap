@@ -6,7 +6,7 @@
 /*   By: dshirely <dshirely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 22:34:11 by dshirely          #+#    #+#             */
-/*   Updated: 2022/03/13 17:51:54 by dshirely         ###   ########.fr       */
+/*   Updated: 2022/03/14 15:11:47 by dshirely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,12 @@ int	main(int argc, char **argv)
 		b = initialize(0);
 		sorting(a, b, argc);
 		// printstack(a,1);
+		// printstack(b,2);
 
 	}
-	else
-		ft_error();
+	// else
+		// ft_error();
+		// write(1,"\n",1);
+		exit(0);
 	return (0);
 }

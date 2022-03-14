@@ -6,7 +6,7 @@
 /*   By: dshirely <dshirely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 16:04:55 by dshirely          #+#    #+#             */
-/*   Updated: 2022/03/13 16:16:01 by dshirely         ###   ########.fr       */
+/*   Updated: 2022/03/14 13:51:15 by dshirely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,9 @@ int		*create_ind_array(int len);
 void	bubble(t_parse *parse, int *a, int *b);
 void	swapelem(int *a, int *b);
 void	atoi_checker(char *str, int sign);
+
+
+void	issorted(t_stack *a);
+int		isis(t_stack *a);
 
 #endif

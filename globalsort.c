@@ -6,7 +6,7 @@
 /*   By: dshirely <dshirely@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 22:32:21 by dshirely          #+#    #+#             */
-/*   Updated: 2022/03/13 14:32:14 by dshirely         ###   ########.fr       */
+/*   Updated: 2022/03/14 15:13:56 by dshirely         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,9 @@ void	ft_sort(t_stack *stack_a, t_stack *stack_b, int action)
 void	big_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	if (stack_a->size <= 100)
-		ft_sort(stack_a, stack_b, 15);
+		ft_sort(stack_a, stack_b, 1);//15
 	else
-		ft_sort(stack_a, stack_b, 30);
+		ft_sort(stack_a, stack_b, 1);//30
+	if(stack_b->size != 0 && stack_a->size <= 100)
+		pa_pb(stack_a, stack_b, 1);
 }
